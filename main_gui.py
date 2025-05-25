@@ -17,12 +17,29 @@ class PetGameGUI:
         self.setup_start_screen()
 
     def load_images(self):
-        folder = "images"
+        base_dir = os.path.dirname(__file__)  
+        image_dir = os.path.join(base_dir, "images")  
+
+        image_files = {
+            "start": "start.jpg",
+            "feed": "feed.jpg",
+            "hospital": "hospital.jpg",
+            "lose": "lose.jpg",
+            "play": "play.jpg",
+            "runaway": "runaway.jpg",
+            "sick": "sick.jpg",
+            "warning": "warning.jpg",
+            "win": "win.jpg",
+            "work": "work.jpg",
+            "business": "business.jpg"
+        }
+
         imgs = {}
-        for name in ["start", "feed", "play", "work", "hospital", "sick", "runaway", "business", "warning", "win", "lose"]:
-            path = os.path.join(folder, f"{name}.jpg")
+        for name, filename in image_files.items():
+            path = os.path.join(image_dir, filename)
             imgs[name] = ImageTk.PhotoImage(Image.open(path).resize((150, 150)))
         return imgs
+
 
     def setup_start_screen(self):
         self.clear_screen()
